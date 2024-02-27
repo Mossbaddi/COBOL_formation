@@ -11,26 +11,32 @@
        01 SoldeCompteSecond PIC 9(5)V99 VALUE 500.00.
        01 Choix PIC 9 VALUE ZERO.
 
-       01 MenuOptions PIC X(100).
+       01 MenuOptions PIC X(250).
+       01  saut-de-ligne           PIC X VALUE X'0A'.
 
 
        PROCEDURE DIVISION.
+       STRING "**********MENU**********", saut-de-ligne
+        "1. Afficher Solde", saut-de-ligne
+        "2. Faire un dépôt", saut-de-ligne
+        "3. Faire un retrait", saut-de-ligne
+        "4. Faire un virement", saut-de-ligne
+        "5. Quitter"
+           INTO MenuOptions.
+
+
+
+
        TRAITEMENT-PRINCIPAL.
            PERFORM MENU-OPERATIONS.
        STOP RUN.
-       
-
-       
-
-
-
-
+              
 
        DEPOT.
            DISPLAY "Donnez le montant de votre dépôt"
            ACCEPT MontantDepot.
            COMPUTE SoldeCompte = SoldeCompte + MontantDepot.
-           *>ADD MontantDepot TO SoldeCompte
+           *>ADD MontantDepot TO SoldeCompte peut être plus lisible ici
        
 
        RETRAIT.
@@ -61,12 +67,9 @@
 
        MENU-OPERATIONS.
        
-       DISPLAY "**********MENU**********"
-       DISPLAY "1. Afficher Solde"
-       DISPLAY "2. Faire un dépôt"
-       DISPLAY "3. Faire un retrait"
-       DISPLAY "4. Faire un virement"
-       DISPLAY "5. Quitter"
+
+
+       DISPLAY MenuOptions
 
                            
 
@@ -81,3 +84,5 @@
                DISPLAY "Choix Invalide."
        END-EVALUATE
        PERFORM MENU-OPERATIONS.
+
+
