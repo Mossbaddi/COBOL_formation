@@ -1,0 +1,7 @@
+Pour compiler votre programme, vous devez :
+    Compiler le module Subprogram avec un -m:
+         cobc -free -m Subprogram.cob
+    Compiler l'executable MainProgram avec un -x:
+         cobc -free -x MainProgram.cob
+
+Les deux fichiers doivent être compilés séparément.
