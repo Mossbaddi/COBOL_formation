@@ -127,7 +127,7 @@
            DISPLAY "Donnez le montant de votre retrait"
            ACCEPT MontantRetrait
            IF SoldeCompte >= MontantRetrait  THEN
-               COMPUTE SoldeCompte = SoldeCompte - MontantDepot
+               COMPUTE SoldeCompte = SoldeCompte - MontantRetrait
                MOVE MontantRetrait TO H-Montant
                MOVE F-Retrait TO H-Action
                WRITE historique-record
@@ -150,6 +150,10 @@
            ELSE 
                DISPLAY "Erreur: Solde insuffisant"
            END-IF.
+
+      ENREGISTRER-TRANSACTION.
+
+      ENREGISTRER-SOLDE.
 
 
        AFFICHER-SOLDE.
